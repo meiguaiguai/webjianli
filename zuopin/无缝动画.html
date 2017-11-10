@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 722px;
+            height: 240px;
+            overflow: hidden;
+            margin: 100px auto;
+            position: relative;
+
+        }
+        ul{
+            list-style: none;
+            width: 2166px;
+            height: 240px;
+            position: absolute;
+            left:0;
+
+
+        }
+        li{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="stop">
+    <ul id="move">
+        <li><img src="images/1.jpg" alt=""/></li>
+        <li><img src="images/2.jpg" alt=""/></li>
+        <li><img src="images/3.jpg" alt=""/></li>
+        <li><img src="images/4.jpg" alt=""/></li>
+        <li><img src="images/1.jpg" alt=""/></li>
+        <li><img src="images/2.jpg" alt=""/></li>
+    </ul>
+</div>
+</body>
+<script>
+
+  window.onload = function() {
+      var ul_move = document.getElementById('move');
+      var stop = document.getElementById('stop');
+      var i = 0;
+      var timer = null;
+
+      function anmite() {
+          timer = setInterval(function (){
+                  i = i - 5;
+
+                  if (i <= -1444) {
+
+                      i = 0;
+                  }
+                  ul_move.style.left = i + 'px';
+
+
+              }, 20);
+
+          }
+      anmite();
+
+
+
+          stop.onmouseover = function () {
+              clearInterval(timer);
+          }
+         stop.onmouseout = function () {
+             anmite();
+         }
+
+      }
+
+
+</script>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .loading{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 99;
+            background-color:white;
+        }
+        .loading > div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            font-size: 30px;
+            line-height: 100px;
+            text-align: center;
+        }
+        .loading > div > span{
+            display: block;
+
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 50%;
+            box-shadow: 0 3px 0 #464646;
+            animation:load linear 1s infinite;
+        }
+        @keyframes load {
+            0%{
+                transform: rotate(0deg);
+            }
+           100%{
+              transform: rotate(360deg);
+           }
+        }
+        </style>
+</head>
+
+<body>
+<div class="loading">
+    <div>
+      <span>
+
+      </span>
+        <b>
+            0%
+        </b>
+    </div>
+</div>
+<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509531755542&di=4e9755c5eb25b767860ec1725c41bdea&imgtype=0&src=http%3A%2F%2Ffile06.16sucai.com%2F2016%2F0313%2Ffb9f5d1925fe03a58a0afd88fc7617d5.jpg" alt="">
+<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509531755542&di=d78377ab644e1fc5aaa9c5a69f0e2bcf&imgtype=0&src=http%3A%2F%2Ffile06.16sucai.com%2F2016%2F0617%2Fb9605fc2ce0c84ada23dcde4bae8c989.jpg" alt="">
+<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509531755543&di=277ce5e1f428d65817b81f535121f1b9&imgtype=0&src=http%3A%2F%2Ffile06.16sucai.com%2F2016%2F0321%2F831e7e46e02ac30162029a7ac6ffa11f.jpg" alt="">
+<img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=155237173,2364015112&fm=27&gp=0.jpg" alt="">
+<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1220773759,3399720882&fm=200&gp=0.jpg" alt="">
+<img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3442978027,1172350765&fm=27&gp=0.jpg" alt="">
+<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2393238165,3419163370&fm=200&gp=0.jpg" alt="">
+<img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2549092323,1942683390&fm=27&gp=0.jpg" alt="">
+<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=498341521,2549612467&fm=27&gp=0.jpg" alt="">
+<img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=283413550,3949991732&fm=11&gp=0.jpg" alt="">
+<img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2749947619,2578567394&fm=27&gp=0.jpg" alt="">
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script>
+    var img  = $('img');
+    var num=0;
+    img.each(function (i) {
+        var oImg = new Image();
+        oImg.onload=function () {
+            oImg.onload=null;
+             num++;
+             $('.loading b').html(parseInt(num/$('img').size()*100)+'%');
+             if(num>=i){
+                 $('.loading').fadeOut();
+             }
+        };
+        oImg.src=img[i].src;
+
+
+    })
+
+</script>
+</html>

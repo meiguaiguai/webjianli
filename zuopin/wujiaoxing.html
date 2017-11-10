@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 270px;
+            height: 50px;
+        }
+        span{
+
+            color: red;
+            font-size: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span>☆</span>
+    <span>☆</span>
+    <span>☆</span>
+    <span>☆</span>
+    <span>☆</span>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script>
+    var index;
+    var flag = false;
+    var hh=0;
+    $('span').on({mouseenter:function(){
+        index=$(this).index();
+        $('span').eq(index).html('★').prevAll().html('★');
+        $('span').eq(index).nextAll().html('☆');
+    },click:function(){
+        flag=true;
+        hh=$(this).index();
+        $('span').eq(hh).html('★').prevAll().html('★');
+        $('span').eq(hh).html('★').nextAll().html('☆')
+      }
+    })
+  $('div').on('mouseleave',function(){
+      if(flag){
+          $('span').eq(hh).html('★').prevAll().html('★');
+          $('span').eq(hh).html('★').nextAll().html('☆')
+      }else{
+          $('span').html('☆');
+      }
+  })
+</script>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            position: relative;
+        }
+        .button{
+            width: 100%;
+            height: 50px;
+            background-color:pink;
+        }
+        button{
+            margin-top: 15px;
+        }
+        .ui-dialog{
+            width: 300px;
+            position: relative;
+            display: none;
+        }
+      .ui-dialog-title{
+          width: 300px;
+          background-color: #c6c6c6;
+          height: 48px;
+          line-height: 48px;
+          cursor: move;
+      }
+  a{
+    width: 25px;
+    height: 25px;
+      display: block;
+      position: absolute;
+      top: 2px;
+      right: 10px;
+      background: url("close.jpg") -69px -12px;
+  }
+        .ui-dialog-content{
+            height: 200px;
+            border: 1px solid silver;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+<div class="button">
+    <button>
+        登录
+    </button>
+</div>
+    <div class="ui-dialog">
+         <div class="ui-dialog-title">
+             登录通行证
+             <a href="#" class="close"></a>
+         </div>
+        <div class="ui-dialog-content">
+
+               登录  <input type="text"/>
+                <br>
+                密码 <input type="text"/>
+              <br>
+            <input type="submit"/>
+            </div>
+    </div>
+</div>
+</body>
+
+<script>
+    var btn = document.querySelector('.button');
+    var close = document.querySelector('.close');
+  var uititle = document.querySelector('.ui-dialog-title');
+  var uidialog = document.querySelector('.ui-dialog');
+  var mouseOffsetX=0;//鼠标偏移量
+  var mouseOffsetY=0;
+  var isDraging = false;//是否可拖拽的标记
+
+
+  //相对拖拽元素左上角的坐标，并且标记为可拖拽
+  uititle.addEventListener('mousedown',function(e){
+      var e= e || window.event;//兼容IE的e方法
+      mouseOffsetX = e.pageX - uidialog.offsetLeft;
+      mouseOffsetY = e.pageY - uidialog.offsetTop;
+      isDraging = true;
+
+  });
+//鼠标移动
+ document.addEventListener('mousemove',function(e){
+     var e = e || window.event;
+     var mouseX = e.pageX;//获取鼠标移动前的位置
+     var mouseY = e.pageY;
+
+     var moveX = 0;//用来记录鼠标移动事件发生时的UItitle新位置
+     var moveY = 0;
+      if(isDraging===true){
+          moveX = mouseX-mouseOffsetX;
+          moveY = mouseY - mouseOffsetY - 40;
+          //页面可视高度
+          var pageWidth= document.documentElement.clientWidth;
+          var pageHeight = document.documentElement.clientHeight;
+
+          //uititle元素的宽高
+          var uidialogWidth = uidialog .offsetWidth;
+          var uidialogHeight = uidialog .offsetHeight;
+
+          // moveX 和moveY的最大值
+          var maxX = pageWidth -uidialogWidth;
+          var maxY = pageHeight - uidialogHeight;
+          //当moveX小于0的时候，
+          moveX =Math.min(maxX, Math.max(0,moveX));
+          moveY = Math.min(maxY, Math.max(0,moveY));
+          uidialog.style.left = moveX +'px';
+          uidialog.style.top =  moveY+'px';
+      }
+ });
+    //鼠标松开，标记为不可拖拽，用document是为了防止拖拽过快，鼠标已经不在uititle上了
+  document.addEventListener('mouseup',function(){
+      isDraging = false;
+  });
+    btn.addEventListener('click',function(){
+        uidialog.style.display='block';
+    });
+    close.addEventListener('click',function(){
+        uidialog.style.display='none';
+    })
+</script>
+</html>

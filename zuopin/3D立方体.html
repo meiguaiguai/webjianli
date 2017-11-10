@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+         div{
+             width: 100px;
+             height: 100px;
+             transform-style: preserve-3d;
+         }
+        .box{
+            margin: 100px auto;
+            position: relative;
+            transition: all 5s;
+            transform: rotateX(20deg) rotateY(20deg);
+        }
+         .box:hover{
+             transform: rotateX(-500deg) rotateY(500deg);
+         }
+        .box>div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+        }
+        .front{
+            background-color: rgba(100, 171, 234, 0.46);
+            transform:  translateZ(50px);
+        }
+         .left{
+             background-color: rgba(234, 124, 149, 0.46);
+             transform: rotateY(-90deg) translateZ(50px);
+         }
+         .right{
+               background-color: rgba(95, 234, 50, 0.46);
+             transform: rotateY(90deg) translateZ(50px);
+           }
+         .bottom{
+             background-color: rgba(128, 69, 234, 0.46);
+             transform: rotateX(-90deg) translateZ(50px);
+         }
+         .back{
+             background-color: rgba(234, 211, 36, 0.46);
+             transform: rotateX(180deg) translateZ(50px);
+
+         }
+         .top{
+             background-color: rgba(234, 19, 36, 0.46);
+             transform: rotateX(90deg) translateZ(50px);
+         }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="front">第一个面</div>
+    <div class="top">第二个面</div>
+    <div class="bottom">第三个面</div>
+    <div class="left"> 第四个面</div>
+    <div class="right">第五个面</div>
+    <div class="back">第六个面</div>
+</div>
+</body>
+</html>

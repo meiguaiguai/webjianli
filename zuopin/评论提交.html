@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        li {
+            list-style: none;
+        }
+        span{
+            display: none;
+        }
+        li:hover span{
+            display: inline-block;
+            margin-left: 100px;
+            border: 1px solid pink;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <textarea name="cont" cols="20" rows="6"></textarea>
+    <button>提交</button>
+    <ul></ul>
+</div>
+</body>
+<script>
+    var txt = document.querySelector('textarea');
+    var btn = document.querySelector('button');
+    var ull = document.querySelector('ul');
+    var arr =[];
+    var del = document.querySelectorAll('span');
+    btn.addEventListener('click',function(){
+        if(txt.value){
+        arr.push(txt.value);
+            txt.value='';
+        }
+        var str = '';
+        for(var i=arr.length - 1;i>=0;i--){
+            str+='<li>'+arr[i]+'<span>del</span></li>'
+        }
+        ull.innerHTML=str;
+        del = document.querySelectorAll('span');
+         a();
+    });
+       function a(){
+        for(k=del.length - 1;k>=0;k--){
+            del[k].addEventListener('click',function(){
+                 arr.splice(k,1);
+                 ull.removeChild(this.parentNode);
+
+            })
+        }
+       }
+
+
+</script>
+</html>

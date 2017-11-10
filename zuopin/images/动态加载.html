@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{
+            border: 1px solid silver;
+        }
+
+    </style>
+</head>
+<body>
+
+   标题：<input type="text" id="bt"/>
+   地址：<input type="text" id="dz"/>
+   说明：<input type="text" id="sm"/>
+    <button>确认</button>
+<table></table>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script>
+//    var data = [{
+//        name: "百度",
+//        url: "http://www.baidu.com",
+//        type: "中国的搜索引擎"
+//    },{
+//        name: "淘宝",
+//        url: "http://www.taobao.com",
+//        type: "剁手网址"
+//    },{
+//        name: "腾讯",
+//        url: "http://www.qq.com",
+//        type: "我们一直在模仿，从未被超越"
+//    }];
+//var str="";
+//    for(var i =0;i<data.length;i++) {
+//        str += '<tr>'
+//               str+='<td>'+data[i].name+'</td>';
+//               str+='<td>'+data[i].url+'</td>';
+//               str+='<td>'+data[i].type+'</td>';
+//        str += '</tr>'
+//$('table').html(str);
+//    }
+
+     var str="";
+
+
+  $('button').on('click',function(){
+
+      str += '<tr>'
+     str+='<td>'+$('input:first').val()+'</td>';
+      str+='<td>'+$('input').eq(1).val()+'</td>';
+      str+='<td>'+$('input').eq(2).val()+'</td>';
+      str += '</tr>';
+      $('table').html(str);
+    });
+
+</script>
+
+</html>
